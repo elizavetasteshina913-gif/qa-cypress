@@ -1,7 +1,6 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-    projectId: "pqvtys",
     defaultBrowser: "chrome",
     viewportHeight: 1024,
     viewportWidth: 1440,
