@@ -9,9 +9,10 @@ describe.skip("Main page", () => {
 
 
     beforeEach(()=>{
-        cy.visit("/");
-        cy.contains("Guest log in").click()
-
+        // cy.visit("/");
+        // cy.contains("Guest log in").click()
+        cy.loginAsGuest();
+        cy.login()
 
     });
 
@@ -27,7 +28,7 @@ describe.skip("Main page", () => {
 
 
 
-    it("all nav links should be visible", () => {
+    it.skip("all nav links should be visible", () => {
         cy.get("nav.sidebar a").each(($link)=> {
             cy.wrap(expectedNavLinks).should('contain', $link.text());
         })
