@@ -1,0 +1,12 @@
+{
+  "status": "ok",
+  "data": [
+    {
+
+      "carBrandId": 3,
+      "carModelId": 11,
+      "mileage": 1500
+
+    }
+  ]
+}
