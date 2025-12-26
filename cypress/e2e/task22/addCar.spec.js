@@ -1,4 +1,14 @@
+import { faker } from '@faker-js/faker';
+
 describe("Register+add car", () => {
+    const password = `Qwerty${faker.number.int({min: 100, max: 999})}`
+    const userData = {
+        "name": faker.person.firstName(),
+        "lastName": faker.person.lastName(),
+        "email": faker.internet.email(),
+        "password": password,
+        "repeatPassword": password
+    }
 
     beforeEach(() => {
         cy.visit("/");
@@ -11,11 +21,11 @@ describe("Register+add car", () => {
         cy.get(`.modal-content`).within(($form) => {
             cy.wrap($form).should("have.class", "modal-content");
 
-            cy.get("#signupName").type("Lizzaaaqa");
-            cy.get("#signupLastName").type("lolio");
-            cy.get("#signupEmail").type("35qaamandarinkaa094@gmail.com");
-            cy.get("#signupPassword").type("Validpass1");
-            cy.get("#signupRepeatPassword").type("Validpass1");
+            cy.get("#signupName").type(userData.name);
+            cy.get("#signupLastName").type(userData.lastName);
+            cy.get("#signupEmail").type(userData.email);
+            cy.get("#signupPassword").type(userData.password);
+            cy.get("#signupRepeatPassword").type(userData.password);
             cy.get(".btn-primary").click();
         });
 
@@ -33,9 +43,9 @@ describe("Register+add car", () => {
                 const carData = response.body.data;
 
 
-                expect(data.mileage).to.eq(1500);
-                expect(data.carBrandId).to.eq(3);
-                expect(data.carModelId).to.eq(11);
+                expect(carData.mileage).to.eq(1500);
+                expect(carData.carBrandId).to.eq(3);
+                expect(carData.carModelId).to.eq(11);
             })
 
 
